@@ -27,12 +27,11 @@ $(document).ready(function() {
         // Imposto un ciclo per stampare con handlebars tutti gli oggetti disco contenuti nell'array dischi.
         for (var i = 0; i < dischi.length; i++) {
 
-          // Rendo minuscolo il genere musicale e lo sostituisco nella proprietà dell'oggetto.
-          var genereLowerCase = dischi[i].genre.toLowerCase();
-          dischi[i].genre = genereLowerCase;
+          // Salvo il disco dentro la variabile album.
+          var album = dischi[i];
 
           // Compilo il template e lo aggiungo.
-          var html = template(dischi[i]);
+          var html = template(album);
           $(".cds-container").append(html);
         }
 
@@ -43,24 +42,22 @@ $(document).ready(function() {
     }
   );
 
-  // Imposto un funzione al variare dell'input nella select.
-  $("#genere").on("input",
+  // Imposto un funzione che registra il cambio di valore nella select.
+  $("#genere").change(
     function () {
 
-      // Salvo il valore dell'input in una variabile.
-      var genere = this.value;
+      // Salvo il valore della select in una variabile.
+      var genereValue = this.value;
       console.log(genere);
 
-      // Nascondo tutti i dischi
-      $(".cd").hide();
-
       // Se il genere è All, mostro tutti i dischi
-      if (genere == "all") {
+      if (genereValue == "All") {
         $(".cd").show();
 
-      // Altrimenti mostro solo i dischi con la classe uguale alla value.
+      // Altrimenti mostro solo i dischi con il data-genere uguale alla value.
       } else {
-        $(".cd." + genere).show();
+        $(".cd").hide();
+        $(".cd[data-genere='"+ genereValue +"']").show();
       }
 
 

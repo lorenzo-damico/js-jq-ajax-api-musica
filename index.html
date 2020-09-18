@@ -18,11 +18,11 @@
         <div class="selection">
           <label for="genere">Seleziona un genere</label>
           <select id="genere" name="genere">
-            <option value="all">All</option>
-            <option value="pop">Pop</option>
-            <option value="rock">Rock</option>
-            <option value="metal">Metal</option>
-            <option value="jazz">Jazz</option>
+            <option value="All">All</option>
+            <option value="Pop">Pop</option>
+            <option value="Rock">Rock</option>
+            <option value="Metal">Metal</option>
+            <option value="Jazz">Jazz</option>
           </select>
         </div>
         <div class="cds-container container">
@@ -30,7 +30,7 @@
         </div>
 
         <script id="disco-template" type="text/x-handlebars-template">
-          <div class="cd {{genre}}">
+          <div class="cd" data-genere="{{genre}}">
               <img src="{{poster}}" alt="poster disco">
               <h3>{{title}}</h3>
               <span class="author">{{author}}</span>
